@@ -1,7 +1,7 @@
 package fr.diginamic.TP11;
 
 /**
- * @author Yonel T
+ * @author Yonel TOUSSAY
  *
  */
 public class Pizza {
@@ -11,22 +11,18 @@ public class Pizza {
 	private double prix = 0;
 	private static int compteur = 0;
 
-	/* Constructeur par défaut */
+	/** Constructeur par défaut */
 	public Pizza() {
 
 	}
 
-	/*
-	 * Constructeur
+	/**
+	 * Constructor
 	 * 
-	 * @params code: code de la pizza
-	 * 
-	 * @params libelle: le nom de la pizza
-	 * 
-	 * @params prix: le prix de la pizza
-	 *
+	 * @param code: code de la pizza
+	 * @param libelle: nom de la pizza
+	 * @param prix: prix de la pizza
 	 */
-
 	public Pizza(String code, String libelle, double prix) {
 		this.code = code;
 		this.libelle = libelle;
@@ -34,27 +30,20 @@ public class Pizza {
 		Pizza.compteur = Pizza.compteur + 1;
 	}
 
-	/*
-	 * Constructeur
+	/**
+	 * Constructor
 	 * 
-	 * @params lIdentifiant
-	 * 
-	 * @params leCode: code de la pizza
-	 * 
-	 * @params leLibelle: le nom de la pizza
-	 * 
-	 * @params lePrix: le prix de la pizza
-	 *
+	 * @param lIdentifiant: identifiant de la pizza
+	 * @param leCode: code de la pizza
+	 * @param leLibelle: nom de la pizza
+	 * @param lePrix: prix de la pizza
 	 */
-
 	public Pizza(int lIdentifiant, String leCode, String leLibelle, double lePrix) {
 		this.id = lIdentifiant;
 		this.code = leCode;
 		this.libelle = leLibelle;
 		this.prix = lePrix;
 	}
-
-	/* Fin des Constructeurs */
 
 	public void setId(int identifiant) {
 		this.id = identifiant;
@@ -93,26 +82,35 @@ public class Pizza {
 		return code + " -> " + libelle + " (" + prix + " €)";
 	}
 
-	// public void modif(String codePizza, String nomPizza, double prixPizza2) {
-	//
-	// }
-	//
-	// List<Pizza> listPizza = new ArrayList<Pizza>();
-	// Scanner sc = new Scanner(System.in);
-	//
-	// public void ajouter() {
-	// System.out.println("\nVeuillez saisir le code :");
-	// String codePizza1 = sc.nextLine();
-	// System.out.println("Veuillez saisir le nom (sans espace) :");
-	// String nomPizza1 = sc.nextLine();
-	// System.out.println("Veuillez saisir le prix :");
-	// double prixPizza1 = sc.nextDouble();
-	// listPizza.add(new Pizza(codePizza1, nomPizza1, prixPizza1));
-	// System.out.println("CODE -> LIBELLE (PRIX)");
-	// System.out.println("-------------------------");
-	// for (Pizza piz : listPizza) {
-	// System.out.println(piz);
-	// }
-	//
-	// }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		if (id != other.id)
+			return false;
+		if (libelle == null) {
+			if (other.libelle != null)
+				return false;
+		} else if (!libelle.equals(other.libelle))
+			return false;
+		if (Double.doubleToLongBits(prix) != Double.doubleToLongBits(other.prix))
+			return false;
+		return true;
+	}
+
 }

@@ -6,6 +6,10 @@ public class Menu {
 
 	}
 
+	/**
+	 * Méthode pour afficher le menu
+	 * 
+	 */
 	public void afficher() {
 		System.out.println("\n***** Pizzeria Administration *****");
 		System.out.println("1. Lister les pizzas");

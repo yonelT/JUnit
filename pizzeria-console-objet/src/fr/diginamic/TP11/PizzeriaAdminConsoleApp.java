@@ -13,6 +13,7 @@ public class PizzeriaAdminConsoleApp {
 		Scanner sc = new Scanner(System.in);
 		String choix = null;
 
+		// Initialisation des Pizzas
 		listePizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50));
 		listePizza.add(new Pizza(1, "MAR", "Margherita", 12.50));
 		listePizza.add(new Pizza(2, "REIN", "La Reine", 11.50));
@@ -44,7 +45,8 @@ public class PizzeriaAdminConsoleApp {
 				System.out.println("Veuillez saisir le nom (sans espace) :");
 				String nomPizza1 = sc.nextLine();
 				System.out.println("Veuillez saisir le prix :");
-				double prixPizza1 = sc.nextDouble();
+				String prixPizza1Str = sc.nextLine();
+				double prixPizza1 = Double.parseDouble(prixPizza1Str);
 				listePizza.add(new Pizza(codePizza1, nomPizza1, prixPizza1));
 				System.out.println("CODE -> LIBELLE (PRIX)");
 				System.out.println("-------------------------");
@@ -69,7 +71,8 @@ public class PizzeriaAdminConsoleApp {
 						System.out.println("Veuillez saisir le nouveau nom (sans espace)");
 						String nomPizza2 = sc.nextLine();
 						System.out.println("Veuillez saisir le nouveau prix");
-						double prixPizza2 = sc.nextDouble();
+						String prixPizza2Str = sc.nextLine();
+						double prixPizza2 = Double.parseDouble(prixPizza2Str);
 
 						listePizza.get(i).setCode(codePizza2);
 						listePizza.get(i).setLibelle(nomPizza2);
