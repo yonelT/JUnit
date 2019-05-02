@@ -1,7 +1,7 @@
-
 package fr.diginamic.TP11;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,48 +22,95 @@ public class PizzeriaAdminConsoleApp {
 		listePizza.add(new Pizza(6, "ORI", "L’orientale", 13.50));
 		listePizza.add(new Pizza(7, "IND", "L’indienne", 14.00));
 
-		monMenu.afficher();
-		choix = sc.nextLine();
-
-		while (!choix.equals("1") && !choix.equals("2") && !choix.equals("3") && !choix.equals("4")
-				&& !choix.equals("99")) {
-			System.out.println("Choix inexistant!\nFaite un choix valide");
+		do {
+			monMenu.afficher();
 			choix = sc.nextLine();
-		}
 
-		switch (choix) {
+			switch (choix) {
 
-		case "1":
-			System.out.println("Liste des pizzas");
+			case "1":
+				System.out.println("Liste des pizzas\n");
+				System.out.println("CODE -> LIBELLE (PRIX)");
+				System.out.println("-------------------------");
 
-			for (Pizza piz : listePizza) {
-				System.out.println(piz);
+				for (Pizza piz : listePizza) {
+					System.out.println(piz);
+				}
+				break;
+			case "2":
+				System.out.println("Ajout d'une nouvelle pizza");
+				System.out.println("\nVeuillez saisir le code :");
+				String codePizza1 = sc.nextLine();
+				System.out.println("Veuillez saisir le nom (sans espace) :");
+				String nomPizza1 = sc.nextLine();
+				System.out.println("Veuillez saisir le prix :");
+				double prixPizza1 = sc.nextDouble();
+				listePizza.add(new Pizza(codePizza1, nomPizza1, prixPizza1));
+				System.out.println("CODE -> LIBELLE (PRIX)");
+				System.out.println("-------------------------");
+				for (Pizza piz : listePizza) {
+					System.out.println(piz);
+				}
+				break;
+			case "3":
+				System.out.println("Mise à jour d'une pizza");
+				System.out.println("\nCODE -> LIBELLE (PRIX)");
+				System.out.println("-------------------------");
+				for (Pizza piz : listePizza) {
+					System.out.println(piz);
+				}
+				System.out.println("Veuillez choisir le code de la pizza à modifier");
+				String codePizza2 = sc.nextLine();
+
+				for (int i = 0; i < listePizza.size(); i++) {
+					if (codePizza2.equals(listePizza.get(i).getCode())) {
+						System.out.println("Veuillez saisir le nouveau code");
+						codePizza2 = sc.nextLine();
+						System.out.println("Veuillez saisir le nouveau nom (sans espace)");
+						String nomPizza2 = sc.nextLine();
+						System.out.println("Veuillez saisir le nouveau prix");
+						double prixPizza2 = sc.nextDouble();
+
+						listePizza.get(i).setCode(codePizza2);
+						listePizza.get(i).setLibelle(nomPizza2);
+						listePizza.get(i).setPrix(prixPizza2);
+
+						for (Pizza piz : listePizza) {
+							System.out.println(piz);
+						}
+
+					}
+				}
+				break;
+			case "4":
+				System.out.println("Suppression d'une pizza");
+				System.out.println("CODE -> LIBELLE (PRIX)");
+				System.out.println("-------------------------");
+
+				for (Pizza piz : listePizza) {
+					System.out.println(piz);
+				}
+
+				Iterator<Pizza> iter = listePizza.iterator();
+				System.out.println("Veuillez choisir le code de la pizza à supprimer :");
+				String pizzaSuppr = sc.nextLine();
+
+				while (iter.hasNext()) {
+					if (pizzaSuppr.equals(iter.next().getCode())) {
+						iter.remove();
+					}
+				}
+				System.out.println("Nouvelle liste");
+				for (Pizza piz : listePizza) {
+					System.out.println(piz);
+				}
+
+				break;
+			case "99":
+				System.out.println("Au revoir :(");
+				continue;
 			}
-
-			// Iterator<Pizza> iter = new Iterator<Pizza>();
-			break;
-		case "2":
-			System.out.println("Ajout d'une nouvelle pizza");
-			// listePizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50));
-			// listePizza.add(new Pizza(1, "MAR", "Margherita", 12.50));
-
-			break;
-		case "3":
-			System.out.println("Mise à jour d'une pizza");
-			break;
-		case "4":
-			System.out.println("Suppression d'une pizza");
-			break;
-		case "99":
-			System.out.println("Au revoir :(");
-			break;
-
-		default:
-			System.out.println("Choix inexistant!");
-			break;
-		}
-		monMenu.afficher();
-
+		} while (!choix.equals("99"));
 		sc.close();
 	}
 
