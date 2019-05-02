@@ -20,4 +20,9 @@ public class Menu {
 		System.out.println("\nFaite un choix");
 	}
 
+	public void entete() {
+		System.out.println("CODE -> LIBELLE (PRIX)");
+		System.out.println("-------------------------");
+	}
+
 }
