@@ -1,14 +1,11 @@
 package fr.diginamic.TP11;
 
 import java.util.List;
+import java.util.Scanner;
 
-public class ListerPizzasService { // extends MenuService {
+public class ListerPizzasService extends MenuService {
 
-	public ListerPizzasService() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void executeUC(PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 
 		System.out.println("Liste des pizzas\n");
 

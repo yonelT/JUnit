@@ -2,68 +2,51 @@ package fr.diginamic.TP11;
 
 import java.util.Scanner;
 
+import Exceptions.AjouterPizzaException;
+import Exceptions.ModifierPizzaException;
+
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
-		Menu monMenu = new Menu();
+
 		Scanner sc = new Scanner(System.in);
+		PizzaMemDao dao = new PizzaMemDao();
+
 		String choix = null;
 
 		do {
-			monMenu.afficher();
+			Menu.afficher();
 			choix = sc.nextLine();
 
 			switch (choix) {
 
 			case "1":
-				PizzaMemDao dao = new PizzaMemDao();
-				ListerPizzasService.executeUC(dao);
+				ListerPizzasService service1 = new ListerPizzasService();
+				service1.executeUC(sc, dao);
 				break;
 			case "2":
-				AjouterPizzaService ajoutS = new AjouterPizzaService();
-				PizzaMemDao dao1 = new PizzaMemDao();
-				ajoutS.executeUC(dao1);
-				monMenu.entete();
+				AjouterPizzaService service2 = new AjouterPizzaService();
+				try {
+					service2.executeUC(sc, dao);
+				} catch (AjouterPizzaException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 			case "3":
-				System.out.println("Mise à jour d'une pizza");
-				monMenu.entete();
-				// for (Pizza piz : listePizza) {
-				// System.out.println(piz);
-				// }
-				System.out.println("Veuillez choisir le code de la pizza à modifier");
-				String codePizza2 = sc.nextLine();
-				System.out.println("Veuillez saisir le nouveau code");
-				String newCodePizza = sc.nextLine();
-				System.out.println("Veuillez saisir le nouveau nom (sans espace)");
-				String nomPizza2 = sc.nextLine();
-				System.out.println("Veuillez saisir le nouveau prix");
-				String prixPizza2Str = sc.nextLine();
-				double prixPizza2 = Double.parseDouble(prixPizza2Str);
-
-				Pizza pizzaModif = new Pizza(newCodePizza, nomPizza2, prixPizza2);
-				// dao.updatePizza(codePizza2, pizzaModif);
-
-				// for (Pizza piz : listePizza) {
-				// System.out.println(piz);
-				// }
+				ModifierPizzaService service3 = new ModifierPizzaService();
+				try {
+					service3.executeUC(sc, dao);
+				} catch (ModifierPizzaException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 			case "4":
-				System.out.println("Suppression d'une pizza");
-				monMenu.entete();
-				// for (Pizza piz : listePizza) {
-				// System.out.println(piz);
-				// }
-
-				System.out.println("Veuillez choisir le code de la pizza à supprimer :");
-				String codePizzaSuppr = sc.nextLine();
-				// dao.deletePizza(codePizzaSuppr);
-
-				System.out.println("Nouvelle liste");
-				// for (Pizza piz : listePizza) {
-				// System.out.println(piz);
-				// }
-
+				SupprimerPizzaService service4 = new SupprimerPizzaService();
+				try {
+					service4.executeUC(sc, dao);
+				} catch (DeletePizzaException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 			case "99":
 				System.out.println("Au revoir :(");
