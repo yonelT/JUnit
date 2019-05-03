@@ -4,8 +4,15 @@ import java.util.Scanner;
 
 import Exceptions.ModifierPizzaException;
 
+/**
+ * Modifie une pizza
+ * 
+ * @author Diginam
+ *
+ */
 public class ModifierPizzaService extends MenuService {
 
+	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws ModifierPizzaException {
 		System.out.println("Mise à jour d'une pizza");
 		Menu.entete();

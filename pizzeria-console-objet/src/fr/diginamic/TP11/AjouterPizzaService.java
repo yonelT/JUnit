@@ -4,8 +4,15 @@ import java.util.Scanner;
 
 import Exceptions.AjouterPizzaException;
 
+/**
+ * Service d'ajout d'une pizza
+ * 
+ * @author Diginam
+ *
+ */
 public class AjouterPizzaService extends MenuService {
 
+	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws AjouterPizzaException {
 
 		System.out.println("Ajout d'une nouvelle pizza");

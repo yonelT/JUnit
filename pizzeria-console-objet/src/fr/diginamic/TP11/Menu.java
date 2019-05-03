@@ -20,6 +20,10 @@ public class Menu {
 		System.out.println("\nFaite un choix");
 	}
 
+	/**
+	 * Méthode pour afficher l'entete du menu
+	 * 
+	 */
 	public static void entete() {
 		System.out.println("CODE -> LIBELLE (PRIX)");
 		System.out.println("-------------------------");

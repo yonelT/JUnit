@@ -8,6 +8,9 @@ public class PizzaMemDao implements IPizzaDao {
 
 	private List<Pizza> listePizza;
 
+	/**
+	 * Constructor Création de la liste de pizza
+	 */
 	public PizzaMemDao() {
 		listePizza = new ArrayList<>();
 
@@ -22,15 +25,18 @@ public class PizzaMemDao implements IPizzaDao {
 		listePizza.add(new Pizza(7, "IND", "L’indienne", 14.00));
 	}
 
+	@Override
 	public List<Pizza> findAllPizzas() {
 		return listePizza;
 	}
 
+	@Override
 	public void saveNewPizza(Pizza pizza) {
 		listePizza.add(pizza);
 
 	}
 
+	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
 
 		Pizza pizzaAModif = findPizzaByCode(codePizza);
@@ -43,6 +49,7 @@ public class PizzaMemDao implements IPizzaDao {
 		}
 	}
 
+	@Override
 	public void deletePizza(String codePizza) {
 		Iterator<Pizza> iter = listePizza.iterator();
 		Pizza pizzaADelete = findPizzaByCode(codePizza);
@@ -59,6 +66,7 @@ public class PizzaMemDao implements IPizzaDao {
 
 	}
 
+	@Override
 	public Pizza findPizzaByCode(String codePizza) {
 		for (int i = 0; i < listePizza.size(); i++) {
 			if (codePizza.equals(listePizza.get(i).getCode())) {
@@ -70,6 +78,7 @@ public class PizzaMemDao implements IPizzaDao {
 
 	}
 
+	@Override
 	public boolean pizzaExists(String codePizza) {
 		for (Pizza laPizza : listePizza) {
 			if (codePizza.equals(laPizza.getCode())) {

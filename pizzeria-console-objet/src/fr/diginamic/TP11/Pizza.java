@@ -4,11 +4,17 @@ package fr.diginamic.TP11;
  * @author Yonel TOUSSAY
  *
  */
+
 public class Pizza {
+	/** id : id de la pizza */
 	private int id = 0;
+	/** code : de la pizza */
 	private String code = null;
+	/** libelle : de la pizza */
 	private String libelle = null;
+	/** prix : de la pizza */
 	private double prix = 0;
+	/** compteur : int */
 	private static int compteur = 0;
 
 	/** Constructeur par défaut */
@@ -19,9 +25,12 @@ public class Pizza {
 	/**
 	 * Constructor
 	 * 
-	 * @param code: code de la pizza
-	 * @param libelle: nom de la pizza
-	 * @param prix: prix de la pizza
+	 * @param code:
+	 *            code de la pizza
+	 * @param libelle:
+	 *            nom de la pizza
+	 * @param prix:
+	 *            prix de la pizza
 	 */
 	public Pizza(String code, String libelle, double prix) {
 		this.code = code;
@@ -33,10 +42,14 @@ public class Pizza {
 	/**
 	 * Constructor
 	 * 
-	 * @param lIdentifiant: identifiant de la pizza
-	 * @param leCode: code de la pizza
-	 * @param leLibelle: nom de la pizza
-	 * @param lePrix: prix de la pizza
+	 * @param lIdentifiant:
+	 *            identifiant de la pizza
+	 * @param leCode:
+	 *            code de la pizza
+	 * @param leLibelle:
+	 *            nom de la pizza
+	 * @param lePrix:
+	 *            prix de la pizza
 	 */
 	public Pizza(int lIdentifiant, String leCode, String leLibelle, double lePrix) {
 		this.id = lIdentifiant;
@@ -45,48 +58,11 @@ public class Pizza {
 		this.prix = lePrix;
 	}
 
-	public void setId(int identifiant) {
-		this.id = identifiant;
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-	public double getPrix() {
-		return prix;
-	}
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
 	@Override
 	public String toString() {
 		return code + " -> " + libelle + " (" + prix + " €)";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -111,6 +87,101 @@ public class Pizza {
 		if (Double.doubleToLongBits(prix) != Double.doubleToLongBits(other.prix))
 			return false;
 		return true;
+	}
+
+	/**
+	 * Getters
+	 * 
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Setters
+	 * 
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * Getters
+	 * 
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * Setters
+	 * 
+	 * @param code
+	 *            the code to set
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	/**
+	 * Getters
+	 * 
+	 * @return the libelle
+	 */
+	public String getLibelle() {
+		return libelle;
+	}
+
+	/**
+	 * Setters
+	 * 
+	 * @param libelle
+	 *            the libelle to set
+	 */
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	/**
+	 * Getters
+	 * 
+	 * @return the prix
+	 */
+	public double getPrix() {
+		return prix;
+	}
+
+	/**
+	 * Setters
+	 * 
+	 * @param prix
+	 *            the prix to set
+	 */
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	/**
+	 * Getters
+	 * 
+	 * @return the compteur
+	 */
+	public static int getCompteur() {
+		return compteur;
+	}
+
+	/**
+	 * Setters
+	 * 
+	 * @param compteur
+	 *            the compteur to set
+	 */
+	public static void setCompteur(int compteur) {
+		Pizza.compteur = compteur;
 	}
 
 }
