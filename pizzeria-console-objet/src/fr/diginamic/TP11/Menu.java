@@ -10,7 +10,7 @@ public class Menu {
 	 * Méthode pour afficher le menu
 	 * 
 	 */
-	public void afficher() {
+	public static void afficher() {
 		System.out.println("\n***** Pizzeria Administration *****");
 		System.out.println("1. Lister les pizzas");
 		System.out.println("2. Ajouter une nouvelle pizza");
@@ -20,7 +20,7 @@ public class Menu {
 		System.out.println("\nFaite un choix");
 	}
 
-	public void entete() {
+	public static void entete() {
 		System.out.println("CODE -> LIBELLE (PRIX)");
 		System.out.println("-------------------------");
 	}
