@@ -2,6 +2,9 @@ package fr.diginamic.TP11;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import Exceptions.AjouterPizzaException;
 
 /**
@@ -11,6 +14,8 @@ import Exceptions.AjouterPizzaException;
  *
  */
 public class AjouterPizzaService extends MenuService {
+
+	private static final Logger logAjout = LoggerFactory.getLogger(AjouterPizzaService.class);
 
 	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws AjouterPizzaException {
@@ -31,6 +36,11 @@ public class AjouterPizzaService extends MenuService {
 
 		Pizza newPiz = new Pizza(codePizza1, nomPizza1, prixPizza1);
 		dao.saveNewPizza(newPiz);
+
+		/**
+		 * Logging pour les pizzas ajoutées
+		 */
+		logAjout.info("Vous avez ajouter la pizza: " + newPiz.getCode());
 
 	}
 
